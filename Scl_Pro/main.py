@@ -6,7 +6,7 @@ from Scl_Pro.database import engine,get_db
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
-models.Base.metadata.create_all(bind=engine)  # bind = A Connectable used to access the database Meta= collection of table objects
+# models.Base.metadata.create_all(bind=engine) # bind = A Connectable used to access the database Meta= collection of table objects
 
 app = FastAPI()
 origins = [
