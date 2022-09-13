@@ -24,6 +24,9 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+def root():
+    return {"Hai":"Hai da"}
 
 @app.post("/login")
 def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get_db)):
