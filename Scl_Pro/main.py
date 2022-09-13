@@ -42,7 +42,7 @@ def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get
     return {"access_token":access_token,"token_type":"bearer"}
 
 
-@app.post("/register",status_code=status.HTTP_201_CREATED)
+@app.post("/registers",status_code=status.HTTP_201_CREATED)
 def createdb(Post:dict,db : Session = Depends(get_db)): 
     print(Post)
     msg=db.query(models.register).filter(models.register.email== Post['email']).first()
