@@ -277,11 +277,7 @@ class Scl_Profile(Base):
     scl_tim_win_from= Column(TIME,nullable = False)
     scl_tim_win_to= Column(TIME,nullable = False)
     shift= Column(String,nullable = False)
-    scholarship_name0=Column(String,nullable=False)
-    boy0= Column(Integer,nullable = False)
-    girl0= Column(Integer,nullable = False)
-    by_govt0= Column(String,nullable = False)
-    by_private0= Column(String,nullable = False)
+    scholarship = Column(String, nullable = True)
 
 
     
