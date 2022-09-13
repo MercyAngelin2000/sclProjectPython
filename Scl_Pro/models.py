@@ -1,5 +1,3 @@
-from unittest.util import _MAX_LENGTH, _MIN_BEGIN_LEN
-from wsgiref.simple_server import server_version
 from sqlalchemy import Column, Integer,String,Date,BigInteger,TIME,Boolean,ForeignKey
 from Scl_Pro.database import Base
 
