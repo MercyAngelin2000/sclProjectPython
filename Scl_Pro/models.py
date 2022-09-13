@@ -277,7 +277,7 @@ class Scl_Profile(Base):
     scl_tim_win_from= Column(TIME,nullable = False)
     scl_tim_win_to= Column(TIME,nullable = False)
     shift= Column(String,nullable = False)
-    scholarship = Column(String, nullable = True)
+    # scholarship = Column(String, nullable = True)
 
 
     
