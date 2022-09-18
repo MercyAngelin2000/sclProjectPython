@@ -6,7 +6,7 @@ from Scl_Pro.database import engine,get_db
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
-models.Base.metadata.create_all(bind=engine) # bind = A Connectable used to access the database Meta= collection of table objects
+# models.Base.metadata.create_all(bind=engine) # bind = A Connectable used to access the database Meta= collection of table objects
 
 app = FastAPI()
 origins = [
@@ -30,19 +30,18 @@ def root():
 
 @app.post("/login")
 def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get_db)):
-    print(data.username)
     mail=db.query(models.register).filter(models.register.email== data.username).first() 
     if not mail:
-        return HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
     
     if not utils.verify(data.password,mail.pwd):
-        return HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
     
     access_token = oauth2.create_access_token(data={"user_id":mail.id})
     return {"access_token":access_token,"token_type":"bearer"}
 
 
-@app.post("/registers",status_code=status.HTTP_201_CREATED)
+@app.post("/register",status_code=status.HTTP_201_CREATED)
 def createdb(Post:dict,db : Session = Depends(get_db)): 
     print(Post)
     msg=db.query(models.register).filter(models.register.email== Post['email']).first()
@@ -55,7 +54,7 @@ def createdb(Post:dict,db : Session = Depends(get_db)):
         db.add(new)
         db.commit()
         db.refresh(new)
-        return {"Data":new.id}
+        return {"id":new.id , "email":new.email}
     
 
 @app.get("/userprofile/")
