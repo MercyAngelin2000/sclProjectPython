@@ -1,6 +1,6 @@
-from Scl_Pro import schema
+from schema import schema
 from jose import jwt
-from Scl_Pro.config import setting
+from config.config import setting
 
 def test_getmethod(client):
     res = client.get("/")
@@ -20,5 +20,5 @@ def test_wrong_user(client,test_user):
     res = client.post("/login",data={"username":test_user['email'],"password":"uiuieuwr"})
     print(res.json())
     print(res.status_code)
-    # assert res.status_code == 403
-    # assert res.detail == "Invalid Credentials"
+    assert res.status_code == 403
+    assert res.json().get('detail' )== "Invalid Credentials"

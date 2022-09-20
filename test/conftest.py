@@ -1,10 +1,10 @@
 from fastapi.testclient import TestClient
-from Scl_Pro.database import get_db,Base
+from database.database import get_db,Base
 from Scl_Pro.main import app
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
 import pytest
-from Scl_Pro.config import setting
+from config.config import setting
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{setting.database_username}:{setting.database_password}@{setting.database_hostname}:{setting.database_port}/{setting.database_name}_test"  #username:password@hostname/dbname
 

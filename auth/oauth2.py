@@ -1,12 +1,11 @@
 from datetime import datetime,timedelta
 from jose import JWTError,jwt
-from Scl_Pro import models
+from model import models
 from fastapi import Depends, status,HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy .orm import Session
-from Scl_Pro.database import get_db
-from Scl_Pro.config import setting
-
+from database.database import get_db 
+from config.config import setting
 oauth2_schema =OAuth2PasswordBearer(tokenUrl='login')
 
 SECRET_KEY = setting.secret_key

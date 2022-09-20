@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer,String,Date,BigInteger,TIME,Boolean,ForeignKey
-from Scl_Pro.database import Base
-
+from database.database import Base
 
 class register(Base):
     __tablename__ = "register"
