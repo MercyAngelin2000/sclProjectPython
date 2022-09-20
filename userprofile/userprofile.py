@@ -14,7 +14,7 @@ def retrive_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.g
 
 
 
-@router.put("/up_userprofile/")
+@router.put("/up_userprofile/",status_code=status.HTTP_200_OK)
 def updatepost(Post:dict,db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
     p=db.query(models.register).filter(models.register.id == get_user.id)
     data= p.first()
@@ -34,5 +34,3 @@ def deletepost(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get
 
     p.delete(synchronize_session=False)
     db.commit()
-    
-    # return Response(status_code=status.HTTP_204_NO_CONTENT)
