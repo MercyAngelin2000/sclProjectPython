@@ -1,7 +1,7 @@
 from fastapi.security.oauth2 import OAuth2PasswordRequestForm
 from fastapi import status, Depends,HTTPException,APIRouter
 from sqlalchemy .orm import Session
-from Utils import utilsfile
+from Utils import util
 from Authentication import oauth2
 from Database.dbconnection import get_db
 from Model import modelsForTable
@@ -15,7 +15,7 @@ def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get
     if not mail:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
     
-    if not utilsfile.verify(data.password,mail.pwd):
+    if not util.verify(data.password,mail.pwd):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
     
     access_token = oauth2.create_access_token(data={"user_id":mail.id})
