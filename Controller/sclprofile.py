@@ -1,18 +1,18 @@
 from fastapi import status,Depends,APIRouter
 from sqlalchemy .orm import Session
-from ModelForTable import models
+from Model import modelsForTable
 from Authentication import oauth2
-from DatabaseFile.database import get_db
+from Database.dbconnection import get_db
 
 router = APIRouter()
 
 @router.post("/sclprofile",status_code=status.HTTP_201_CREATED)
 def insertdata(Post:dict,db:Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)): 
     print(get_user)
-    p=db.query(models.Scl_Profile).filter(models.Scl_Profile.owner_id==get_user.id)
+    p=db.query(modelsForTable.Scl_Profile).filter(modelsForTable.Scl_Profile.owner_id==get_user.id)
 
     if not p.first():
-        new = models.Scl_Profile(owner_id=get_user.id,**Post)
+        new = modelsForTable.Scl_Profile(owner_id=get_user.id,**Post)
         db.add(new)
         db.commit()
         db.refresh(new)
@@ -26,7 +26,7 @@ def insertdata(Post:dict,db:Session = Depends(get_db),get_user : int= Depends(oa
 
 @router.get("/sclprofile/")
 def retrive_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
-    retrive=db.query(models.Scl_Profile).filter(models.Scl_Profile.owner_id == get_user.id).first()
+    retrive=db.query(modelsForTable.Scl_Profile).filter(modelsForTable.Scl_Profile.owner_id == get_user.id).first()
     print(retrive)
     return retrive
 

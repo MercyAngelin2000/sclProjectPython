@@ -1,15 +1,15 @@
 from sqlalchemy .orm import Session
 from fastapi import Depends,status,HTTPException,APIRouter
-from ModelForTable import models
+from Model import modelsForTable
 from Authentication import oauth2
-from DatabaseFile.database import get_db
+from Database.dbconnection import get_db
 
 router = APIRouter()
 
 
 @router.get("/userprofile/")
 def retrive_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
-    retrive =db.query(models.register).filter(models.register.id == get_user.id).first()
+    retrive =db.query(modelsForTable.register).filter(modelsForTable.register.id == get_user.id).first()
     # print(retrive.name,id)
     return retrive
 
@@ -17,7 +17,7 @@ def retrive_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.g
 
 @router.put("/up_userprofile/",status_code=status.HTTP_200_OK)
 def updatepost(Post:dict,db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
-    p=db.query(models.register).filter(models.register.id == get_user.id)
+    p=db.query(modelsForTable.register).filter(modelsForTable.register.id == get_user.id)
     data= p.first()
     if data == None:        
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id: {get_user.id} does not exist")
@@ -29,7 +29,7 @@ def updatepost(Post:dict,db : Session = Depends(get_db),get_user : int= Depends(
 
 @router.delete("/del_userprofile/",status_code=status.HTTP_204_NO_CONTENT)
 def deletepost(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
-    p=db.query(models.register).filter(models.register.id== get_user.id)
+    p=db.query(modelsForTable.register).filter(modelsForTable.register.id== get_user.id)
     if p.first() == None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id: {get_user.id} does not exist")
 
