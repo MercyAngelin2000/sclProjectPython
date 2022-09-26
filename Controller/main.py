@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sclprofile import sclprofile
-from login import login
-from register import register
-from userprofile import userprofile
+from Controller import sclprofile
+from Controller import login
+from Controller import register
+from Controller import userprofile
 
 
 # models.Base.metadata.create_all(bind=engine) # bind = A Connectable used to access the database Meta= collection of table objects

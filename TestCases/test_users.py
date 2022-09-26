@@ -1,6 +1,6 @@
-from schema import schema
+from Schema import schema
 from jose import jwt
-from config.config import setting
+from Configuration.config import setting
 import pytest
 
 def test_getmethod(client):

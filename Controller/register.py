@@ -1,8 +1,8 @@
 from fastapi import status, Depends,HTTPException,APIRouter
 from sqlalchemy .orm import Session
-from utils import utils
-from database.database import get_db
-from model import models
+from Utils import utils
+from Database.database import get_db
+from Model import models
 router = APIRouter()
 
 @router.post("/register",status_code=status.HTTP_201_CREATED)

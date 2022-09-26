@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer,String,Date,BigInteger,TIME,Boolean,ForeignKey
-from database.database import Base
+from Database.database import Base
 
 class register(Base):
     __tablename__ = "register"

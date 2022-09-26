@@ -1,14 +1,14 @@
 from sqlalchemy .orm import Session
 from fastapi import Depends,status,HTTPException,APIRouter
-from model import models
-from auth import oauth2
-from database.database import get_db
+from Model import models
+from Authentication import oauth2
+from Database.database import get_db
 router = APIRouter()
 
 
 @router.get("/userprofile/")
 def retrive_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
-    retrive=db.query(models.register).filter(models.register.id == get_user.id).first()
+    retrive =db.query(models.register).filter(models.register.id == get_user.id).first()
     # print(retrive.name,id)
     return retrive
 
