@@ -1,7 +1,7 @@
 from fastapi import status, Depends,HTTPException,APIRouter
 from sqlalchemy .orm import Session
 from Utils import utils
-from Database.database import get_db
+from DatabaseFile.database import get_db
 from ModelForTable import models
 
 router = APIRouter()

@@ -2,7 +2,7 @@ from sqlalchemy .orm import Session
 from fastapi import Depends,status,HTTPException,APIRouter
 from ModelForTable import models
 from Authentication import oauth2
-from Database.database import get_db
+from DatabaseFile.database import get_db
 
 router = APIRouter()
 
