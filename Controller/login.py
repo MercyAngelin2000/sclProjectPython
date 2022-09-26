@@ -4,7 +4,7 @@ from sqlalchemy .orm import Session
 from Utils import utils
 from Authentication import oauth2
 from Database.database import get_db
-from Model import models
+from ModelForTable import models
 router = APIRouter()
 
 @router.post("/login")
