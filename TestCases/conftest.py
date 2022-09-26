@@ -4,8 +4,8 @@ from Controller.main import app
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
 import pytest
-from config.config import setting
-from auth.oauth2 import create_access_token
+from Configuration.config import setting
+from Authentication.oauth2 import create_access_token
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{setting.database_username}:{setting.database_password}@{setting.database_hostname}:{setting.database_port}/{setting.database_name}_test"  #username:password@hostname/dbname
 
