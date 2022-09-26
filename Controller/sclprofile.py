@@ -3,6 +3,7 @@ from sqlalchemy .orm import Session
 from Model import models
 from Authentication import oauth2
 from Database.database import get_db
+
 router = APIRouter()
 
 @router.post("/sclprofile",status_code=status.HTTP_201_CREATED)
