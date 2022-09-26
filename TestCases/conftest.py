@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from database import get_db,Base
+from Database.database import get_db,Base
 from Controller.main import app
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
@@ -20,6 +20,7 @@ def session():
     db = TestingSessionlocal()
     try:
         yield db
+        print("hai")
     finally:
         db.close()
 
