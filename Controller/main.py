@@ -9,6 +9,7 @@ from Controller import userprofile
 # models.Base.metadata.create_all(bind=engine) # bind = A Connectable used to access the database Meta= collection of table objects
 
 app = FastAPI()
+
 app.include_router(login.router)
 app.include_router(register.router)
 app.include_router(userprofile.router)

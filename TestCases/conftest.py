@@ -1,5 +1,5 @@
 from fastapi.testclient import TestClient
-from Controller.main import app
+from Controller import main
 from Database.dbconnection import get_db,Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
@@ -30,8 +30,8 @@ def client(session):
             yield session
         finally:
             session.close()
-    app.dependency_overrides[get_db] = override_get_db
-    yield TestClient(app)
+    main.app.dependency_overrides[get_db] = override_get_db
+    yield TestClient(main.app)
 
 @pytest.fixture
 def test_user(client):
