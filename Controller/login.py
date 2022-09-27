@@ -3,7 +3,7 @@ from fastapi import status, Depends,HTTPException,APIRouter
 from sqlalchemy .orm import Session
 from Authentication import oauth2
 from Database.dbconnection import get_db
-from Model import modelsForTable
+from Model import register
 from Util import util
 
 router = APIRouter()
@@ -12,7 +12,7 @@ router = APIRouter()
 @router.post("/login")
 def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get_db)):
     print("haiii")
-    mail=db.query(modelsForTable.register).filter(modelsForTable.register.email== data.username).first() 
+    mail=db.query(register.register).filter(register.register.email== data.username).first() 
     print(mail)
     if not mail:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="Invalid Credentials")
