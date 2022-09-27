@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer,String,BigInteger,TIME,Boolean,ForeignKey
 from Model.register import Base
 
+
 class Scl_Profile(Base):
     __tablename__ = "school_profile"
     owner_id = Column(Integer,ForeignKey("register.id",ondelete="CASCADE"), nullable = False)
