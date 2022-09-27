@@ -1,4 +1,4 @@
-from Schema import schema
+from Schemas import schema
 from jose import jwt
 from Configuration.config import setting
 import pytest
