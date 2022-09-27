@@ -5,6 +5,7 @@ from Utils import util
 from Authentication import oauth2
 from Database.dbconnection import get_db
 from Model import modelsForTable
+
 router = APIRouter()
 
 @router.post("/login")
