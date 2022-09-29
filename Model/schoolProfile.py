@@ -18,6 +18,7 @@ class Scl_Profile(Base):
     schoolLocation = Column(String,nullable = True)
     establishmentYear = Column(BigInteger,nullable = True)
     medium = Column(String,nullable = True)
+
     natureOfAffiliation = Column(String,nullable = True)
     schoolLevel = Column(String,nullable = True)
     gender = Column(String,nullable = True)
@@ -29,10 +30,12 @@ class Scl_Profile(Base):
     correspondentName = Column(String,nullable = True)
     correspondentMobile = Column(BigInteger,nullable = True)
     correspondentEmail= Column(String,nullable = True)
+
     principalName = Column(String,nullable = True)
     principalPhone = Column(BigInteger,nullable = True)
     principalEmail= Column(String,nullable = True)
     principalMobile = Column(BigInteger,nullable = True)
+
     instituteRecognizedByGovt = Column(String,nullable = True)
     boardName = Column(String,nullable = True) 
     affiliationNo = Column(BigInteger,nullable = True)
@@ -48,6 +51,7 @@ class Scl_Profile(Base):
     fireSaftyCertificate= Column(String,nullable = True)
     sanitationCertificate= Column(String,nullable = True)
     buildingSaftyCertificate= Column(String,nullable = True)
+
     schoolOwnedBy= Column(String,nullable = True)
     trustName= Column(String,nullable = True)
     isTrustRegistered= Column(String,nullable = True)
@@ -60,6 +64,7 @@ class Scl_Profile(Base):
     presidentAddress= Column(String,nullable = True)
     presidentPhone= Column(BigInteger,nullable = True)
     presidentEmail= Column(String,nullable = True)
+
     governingBodyOfTrust= Column(String,nullable = True)
     members= Column(Integer,nullable = True)
     tenureMember= Column(Integer,nullable = True)
@@ -69,6 +74,7 @@ class Scl_Profile(Base):
     parentTeacherAssociation= Column(String,nullable = True)
     parentTeacherAssociationMember= Column(Integer,nullable = True)
     parentTeacherAssociationTenure= Column(Integer,nullable = True)
+
     studentAssociation = Column(String,nullable = True)
     studentAssociationMember= Column(Integer,nullable = True)
     studentAssociationTenure= Column(Integer,nullable = True)
@@ -77,6 +83,7 @@ class Scl_Profile(Base):
     constitutionCommittee= Column(String,nullable = True)
     constitutionMember= Column(Integer,nullable = True)
     constitutionTenure= Column(Integer,nullable = True)
+
     schoolBuildingType= Column(String,nullable = True)
     schoolCampusArea= Column(String,nullable = True)
     builtupArea= Column(String,nullable = True)
@@ -85,6 +92,7 @@ class Scl_Profile(Base):
     provision= Column(String,nullable = True)
     noOfStaircase= Column(Integer,nullable = True)
     noOfLifts= Column(Integer,nullable = True)
+
     classRoom= Column(Integer,nullable = True)
     staffRoom= Column(Integer,nullable = True)
     physicsLab= Column(Integer,nullable = True)
@@ -108,6 +116,7 @@ class Scl_Profile(Base):
     room= Column(Integer,nullable = True)
     splNeeds= Column(String,nullable = True)
     staffSpeciallNeed= Column(String,nullable = True)
+
     boundaryWall= Column(String,nullable = True)
     wallStatus= Column(String,nullable = True)
     cctv= Column(String,nullable = True)
@@ -119,6 +128,7 @@ class Scl_Profile(Base):
     noOfFemaleGuard= Column(String,nullable = True)
     waterFacility= Column(String,nullable = True)
     drainageFacility= Column(String,nullable = True)
+
     midday= Column(String,nullable = True)
     noOfOwnedBus= Column(Integer,nullable = True)
     gpsCamera= Column(Integer,nullable = True)
@@ -128,6 +138,7 @@ class Scl_Profile(Base):
     subContractedBus= Column(Integer,nullable = True)
     busPass= Column(String,nullable = True)
     freeTransport= Column(String,nullable = True)
+
     libraryOpen= Column(TIME,nullable = True)
     libraryClose= Column(TIME,nullable = True)
     noOfLibraryBook= Column(Integer,nullable = True)
@@ -142,6 +153,7 @@ class Scl_Profile(Base):
     multimedia3= Column(Boolean ,nullable = True)
     multimedia4= Column(Boolean ,nullable = True)
     multimedia5= Column(Boolean ,nullable = True)
+
     permanentMalePrincipal= Column(Integer,nullable = True)
     permanentFemalePrincipal= Column(Integer,nullable = True)
     temporaryMalePrincipal= Column(Integer,nullable = True)
@@ -198,6 +210,7 @@ class Scl_Profile(Base):
     permanentFemalePT= Column(Integer,nullable = True)
     temporaryMalePT= Column(Integer,nullable = True)
     temporaryFemalePT= Column(Integer,nullable = True)
+
     permanentOfficeManager= Column(Integer,nullable = True)
     temporaryOfficeManager= Column(Integer,nullable = True)
     partTimeOfficeManager= Column(Integer,nullable = True)
@@ -219,6 +232,7 @@ class Scl_Profile(Base):
     permanentOthers= Column(Integer,nullable = True)
     temporaryOthers= Column(Integer,nullable = True)
     partTimeOthers= Column(Integer,nullable = True)
+
     noOfCarricularActivity= Column(Integer,nullable = True)
     noOfGrps= Column(Integer,nullable = True)
     noOfCommunity= Column(Integer,nullable = True)
@@ -240,6 +254,7 @@ class Scl_Profile(Base):
     noOfSclProgramsAtState= Column(Integer,nullable = True)
     noOfSclProgramsAtNational= Column(Integer,nullable = True)
     noOfSclProgramsAtInternational= Column(Integer,nullable = True)
+
     academicYearBeginingMonth= Column(String,nullable = True)
     academicYearEndingMonth= Column(String,nullable = True)
     workingDay2021= Column(Integer,nullable = True)
@@ -257,6 +272,7 @@ class Scl_Profile(Base):
     holiday2021= Column(Integer,nullable = True)
     holiday2020= Column(Integer,nullable = True)
     holiday2019= Column(Integer,nullable = True)
+    
     noOfSubTeachingPeriod= Column(Integer,nullable = True)
     noOfMoralTeachingPeriod= Column(Integer,nullable = True)
     teachingDuration= Column(Integer,nullable = True)
