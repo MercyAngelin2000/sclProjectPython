@@ -5,6 +5,37 @@ from Authentication import oauth2
 from Database.dbconnection import get_db
 
 router = APIRouter()
+global i
+
+def getData(data):
+    temp=[]
+    scholarship=[]    
+
+    for value in data:
+        keys =value.keys()
+        break
+
+    for value in data:
+        for key in keys:
+            temp.append(value[key])
+        scholarship.append(temp)
+        temp=[]
+
+    return scholarship
+
+# def retrow(data):
+#     scholarship=[]
+#     key = ("scholarshipName","boy","girl","byGovt","byPrivate")
+    
+#     for i in data:
+#         print(i)
+#         my_dict = dict(zip(key,i))
+#         scholarship.append(my_dict)
+#     print(scholarship)
+#     return scholarship
+   
+
+    
 
 @router.post("/sclprofile",status_code=status.HTTP_201_CREATED)
 def insertdata(Post:dict,db:Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)): 
@@ -12,13 +43,16 @@ def insertdata(Post:dict,db:Session = Depends(get_db),get_user : int= Depends(oa
     p=db.query(schoolProfile.Scl_Profile).filter(schoolProfile.Scl_Profile.owner_id==get_user.id)
 
     if not p.first():
-        new = schoolProfile.Scl_Profile(owner_id=get_user.id,**Post)
+        print(Post)
+        new = schoolProfile.Scl_Profile(owner_id=get_user,**Post)
         db.add(new)
         db.commit()
         db.refresh(new)
-        # return {"Data":new.id}
         return{"data":new}
-    else:
+    else:     
+        if (Post.get('scholarship')):
+            Post['scholarship'] = getData(Post['scholarship'])   
+            print(Post)
         p.update(Post,synchronize_session=False)
         db.commit()
         return {"Msg":p.first()} 
@@ -28,7 +62,9 @@ def insertdata(Post:dict,db:Session = Depends(get_db),get_user : int= Depends(oa
 def retrieve_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.get_current_user)):
     retrieve=db.query(schoolProfile.Scl_Profile).filter(schoolProfile.Scl_Profile.owner_id == get_user.id).first()
     print(retrieve)
-    return {'sclprofile1':{'instituteName':retrieve.instituteName,'postal':retrieve.postal,'district':retrieve.district,'state':retrieve.state,'city':retrieve.city,'pincode':retrieve.pincode,'url':retrieve.url,'officialEmail':retrieve.officialEmail,
+    if retrieve:
+        print(retrieve.scholarship)
+        return {'sclprofile1':{'instituteName':retrieve.instituteName,'postal':retrieve.postal,'district':retrieve.district,'state':retrieve.state,'city':retrieve.city,'pincode':retrieve.pincode,'url':retrieve.url,'officialEmail':retrieve.officialEmail,
                             'officialPhone':retrieve.officialPhone,'schoolLocation':retrieve.schoolLocation,'establishmentYear':retrieve.establishmentYear,'medium':retrieve.medium},
             'sclprofile2':{'natureOfAffiliation':retrieve.natureOfAffiliation,'schoolLevel':retrieve.schoolLevel,'gender':retrieve.gender,'currentGirls':retrieve.currentGirls,'CurrentBoys':retrieve.CurrentBoys,'totalStudents':retrieve.totalStudents,
                             'teachingStaff':retrieve.teachingStaff,'nonTeachingStaff':retrieve.nonTeachingStaff,'correspondentName':retrieve.correspondentName,'correspondentMobile':retrieve.correspondentMobile,'correspondentEmail':retrieve.correspondentEmail},
@@ -68,5 +104,10 @@ def retrieve_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.
             'sclprofile16':{'academicYearBeginingMonth':retrieve.academicYearBeginingMonth,'academicYearEndingMonth':retrieve.academicYearEndingMonth,'workingDay2021':retrieve.workingDay2021,'workingDay2020':retrieve.workingDay2020,'workingDay2019':retrieve.workingDay2019,'hrsOfAcademic2021':retrieve.hrsOfAcademic2021,'hrsOfAcademic2020':retrieve.hrsOfAcademic2020,'hrsOfAcademic2019':retrieve.hrsOfAcademic2019,'instructionalHrs2021':retrieve.instructionalHrs2021,
                             'instructionalHrs2020':retrieve.instructionalHrs2020,'instructionalHrs2019':retrieve.instructionalHrs2019,'nonInstructuionalWorkingday2021':retrieve.nonInstructuionalWorkingday2021,'nonInstructuionalWorkingday2020':retrieve.nonInstructuionalWorkingday2020,'nonInstructuionalWorkingday2019':retrieve.nonInstructuionalWorkingday2019,'holiday2021':retrieve.holiday2021,'holiday2020':retrieve.holiday2020,'holiday2019':retrieve.holiday2019},
             'sclprofile17':{'noOfSubTeachingPeriod':retrieve.noOfSubTeachingPeriod,'noOfMoralTeachingPeriod':retrieve.noOfMoralTeachingPeriod,'teachingDuration':retrieve.teachingDuration,'noOfClubHrs':retrieve.noOfClubHrs,'fromTimeInSummer':retrieve.fromTimeInSummer,'toTimeInSummer':retrieve.toTimeInSummer,'fromTimeInWinter':retrieve.fromTimeInWinter,'toTimeInWinter':retrieve.toTimeInWinter,'shift':retrieve.shift},
+            'sclprofile18':{'scholarship':retrieve.scholarship}
+            # 'sclprofile18':{'scholarship': retrow(retrieve.scholarship)}
             }
+
+
+
 

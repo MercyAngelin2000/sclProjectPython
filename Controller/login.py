@@ -5,6 +5,7 @@ from Authentication import oauth2
 from Database.dbconnection import get_db
 from Model import register
 from Util import util
+from Schemas import schema
 
 router = APIRouter()
 
@@ -22,3 +23,6 @@ def login(data: OAuth2PasswordRequestForm = Depends(),db : Session = Depends(get
     
     access_token = oauth2.create_access_token(data={"user_id":mail.id})
     return {"access_token":access_token,"token_type":"bearer"}
+
+
+

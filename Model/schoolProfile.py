@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer,String,BigInteger,TIME,Boolean,ForeignKey
+from sqlalchemy import Column, Integer,String,BigInteger,TIME,Boolean,ForeignKey,ARRAY
 from Model.register import Base
 
 
@@ -282,5 +282,14 @@ class Scl_Profile(Base):
     fromTimeInWinter= Column(TIME,nullable = True)
     toTimeInWinter= Column(TIME,nullable = True)
     shift= Column(String,nullable = True)
-    # scholarship = Column(String, nullable = True)
+
+    scholarship= Column(ARRAY(String), nullable=True)
+
+   
+   
+    
+
+    
+
+    
 
