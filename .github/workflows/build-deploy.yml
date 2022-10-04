@@ -72,7 +72,7 @@ jobs:             #set of steps used to run
     environment:
       name: production
 
-    steps:         #to deploy the code in heroku we need to pul our github repo, then install heroku cli, heroku login , add git remote, git push heroku main
+    steps:                             #to deploy the code in heroku we need to pul our github repo, then install heroku cli, heroku login , add git remote, git push heroku main
       - name: pulling git repo           
         uses: actions/checkout@v3   
       - name: deploying to heroku
@@ -82,7 +82,7 @@ jobs:             #set of steps used to run
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}} 
           heroku_email: ${{secrets.HEROKU_EMAIL}}
       - name: upgrading alembic
-      run: alembic upgrade head
+        run: alembic upgrade head
 
       
         
