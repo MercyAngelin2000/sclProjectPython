@@ -105,6 +105,7 @@ def retrieve_data(db : Session = Depends(get_db),get_user : int= Depends(oauth2.
                             'instructionalHrs2020':retrieve.instructionalHrs2020,'instructionalHrs2019':retrieve.instructionalHrs2019,'nonInstructuionalWorkingday2021':retrieve.nonInstructuionalWorkingday2021,'nonInstructuionalWorkingday2020':retrieve.nonInstructuionalWorkingday2020,'nonInstructuionalWorkingday2019':retrieve.nonInstructuionalWorkingday2019,'holiday2021':retrieve.holiday2021,'holiday2020':retrieve.holiday2020,'holiday2019':retrieve.holiday2019},
             'sclprofile17':{'noOfSubTeachingPeriod':retrieve.noOfSubTeachingPeriod,'noOfMoralTeachingPeriod':retrieve.noOfMoralTeachingPeriod,'teachingDuration':retrieve.teachingDuration,'noOfClubHrs':retrieve.noOfClubHrs,'fromTimeInSummer':retrieve.fromTimeInSummer,'toTimeInSummer':retrieve.toTimeInSummer,'fromTimeInWinter':retrieve.fromTimeInWinter,'toTimeInWinter':retrieve.toTimeInWinter,'shift':retrieve.shift},
             'sclprofile18':{'scholarship':retrieve.scholarship}
+            
             # 'sclprofile18':{'scholarship': retrow(retrieve.scholarship)}
             }
 
